@@ -12,11 +12,13 @@ interface ShareButtonsProps {
 export function ShareButtons({ url, title, text }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
   const [currentUrl, setCurrentUrl] = useState(url || "");
+  const [nativeShareSupported, setNativeShareSupported] = useState(false);
 
   useEffect(() => {
     if (!url) {
       setCurrentUrl(window.location.href);
     }
+    setNativeShareSupported(typeof navigator !== "undefined" && "share" in navigator);
   }, [url]);
 
   const shareUrl = currentUrl;
@@ -48,7 +50,7 @@ export function ShareButtons({ url, title, text }: ShareButtonsProps) {
 
   return (
     <div className="flex items-center gap-1.5">
-      {typeof navigator !== "undefined" && "share" in navigator && (
+      {nativeShareSupported && (
         <button
           onClick={handleNativeShare}
           className="flex items-center gap-1.5 rounded-md bg-navy px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-navy/90"

@@ -3,6 +3,7 @@
  * falling back to mock data for development.
  */
 
+import { unstable_cache } from "next/cache";
 import type { Member } from "./mock-data";
 import { getKPIs } from "./mock-data";
 import { TETO_CONSTITUCIONAL, type Cargo } from "@/lib/constants";
@@ -401,6 +402,17 @@ export function getDataMonth(mesReferencia?: string): string {
   });
 }
 
+export interface YearComparisonData {
+  year: number;
+  totalMembers: number;
+  membersAboveTeto: number;
+  totalAboveTeto: number;
+  averageAboveTeto: number;
+  averageTotalRemuneration: number;
+  topOrgans: { orgao: string; total: number }[];
+  topState: { estado: string; total: number } | null;
+}
+
 export interface Anomalia {
   nome: string;
   cargo: string;
@@ -478,3 +490,177 @@ export function getAnomalias(ano: number, minVariacaoPct = 200): Anomalia[] {
     }
   });
 }
+
+function getYearAggregates(year: number): YearComparisonData | null {
+  try {
+    const db = openDB();
+    if (!db) return null;
+
+    const rows = db
+      .prepare(
+        `SELECT
+          COUNT(DISTINCT nome || '-' || orgao) as total_members,
+          SUM(CASE WHEN acima_teto > 0 THEN 1 ELSE 0 END) as members_above_teto,
+          SUM(acima_teto) as total_above_teto,
+          AVG(CASE WHEN acima_teto > 0 THEN acima_teto END) as average_above_teto,
+          AVG(remuneracao_total) as average_total_remuneration
+        FROM membros
+        WHERE ano_referencia = ?`
+      )
+      .get(year) as {
+        total_members: number;
+        members_above_teto: number;
+        total_above_teto: number;
+        average_above_teto: number;
+        average_total_remuneration: number;
+      } | undefined;
+
+    const topOrgansRows = db
+      .prepare(
+        `SELECT orgao, SUM(acima_teto) as total
+         FROM membros
+         WHERE ano_referencia = ? AND acima_teto > 0
+         GROUP BY orgao
+         ORDER BY total DESC`
+      )
+      .all(year) as { orgao: string; total: number }[];
+
+    const topStateRow = db
+      .prepare(
+        `SELECT estado, SUM(acima_teto) as total
+         FROM membros
+         WHERE ano_referencia = ? AND acima_teto > 0
+         GROUP BY estado
+         ORDER BY total DESC
+         LIMIT 1`
+      )
+      .get(year) as { estado: string; total: number } | undefined;
+
+    db.close();
+
+    if (!rows) return null;
+
+    return {
+      year,
+      totalMembers: rows.total_members || 0,
+      membersAboveTeto: rows.members_above_teto || 0,
+      totalAboveTeto: rows.total_above_teto || 0,
+      averageAboveTeto: rows.average_above_teto || 0,
+      averageTotalRemuneration: rows.average_total_remuneration || 0,
+      topOrgans: topOrgansRows.map((r) => ({ orgao: r.orgao, total: r.total })),
+      topState: topStateRow ? { estado: topStateRow.estado, total: topStateRow.total } : { estado: "", total: 0 },
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function getYearComparison(year1: number, year2: number): {
+  year1: YearComparisonData;
+  year2: YearComparisonData;
+  growth: {
+    membersAboveTeto: number;
+    totalAboveTeto: number;
+    averageAboveTeto: number;
+  };
+} | null {
+  const y1 = getYearAggregates(year1);
+  const y2 = getYearAggregates(year2);
+
+  if (!y1 || !y2) return null;
+
+  const growth = {
+    membersAboveTeto: y1.membersAboveTeto > 0
+      ? ((y2.membersAboveTeto - y1.membersAboveTeto) / y1.membersAboveTeto) * 100
+      : 0,
+    totalAboveTeto: y1.totalAboveTeto > 0
+      ? ((y2.totalAboveTeto - y1.totalAboveTeto) / y1.totalAboveTeto) * 100
+      : 0,
+    averageAboveTeto: y1.averageAboveTeto > 0
+      ? ((y2.averageAboveTeto - y1.averageAboveTeto) / y1.averageAboveTeto) * 100
+      : 0,
+  };
+
+  return { year1: y1, year2: y2, growth };
+}
+
+export function getAllYearsTrend(): YearComparisonData[] {
+  try {
+    const db = openDB();
+    if (!db) return [];
+
+    const rows = db.prepare(`
+      SELECT 
+        ano_referencia as year,
+        COUNT(DISTINCT nome || '-' || orgao) as totalMembers,
+        SUM(CASE WHEN acima_teto > 0 THEN 1 ELSE 0 END) as membersAboveTeto,
+        SUM(acima_teto) as totalAboveTeto,
+        AVG(CASE WHEN acima_teto > 0 THEN acima_teto END) as averageAboveTeto,
+        AVG(remuneracao_total) as averageTotalRemuneration
+      FROM membros
+      GROUP BY ano_referencia
+      ORDER BY ano_referencia
+    `).all() as {
+      year: number;
+      totalMembers: number;
+      membersAboveTeto: number;
+      totalAboveTeto: number;
+      averageAboveTeto: number;
+      averageTotalRemuneration: number;
+    }[];
+
+    db.close();
+
+    return rows.map((row) => ({
+      year: row.year,
+      totalMembers: row.totalMembers || 0,
+      membersAboveTeto: row.membersAboveTeto || 0,
+      totalAboveTeto: row.totalAboveTeto || 0,
+      averageAboveTeto: row.averageAboveTeto || 0,
+      averageTotalRemuneration: row.averageTotalRemuneration || 0,
+      topOrgans: [],
+      topState: null,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export const getCachedAvailableYears = unstable_cache(
+  async () => getAvailableYears(),
+  ["available-years"],
+  { revalidate: 600 }
+);
+
+export const getCachedAllYearsTrend = unstable_cache(
+  async () => getAllYearsTrend(),
+  ["all-years-trend"],
+  { revalidate: 600 }
+);
+
+export function getYearMonthCounts(): { year: number; monthCount: number }[] {
+  try {
+    const db = openDB();
+    if (!db) return [];
+
+    const rows = db
+      .prepare(
+        `SELECT ano_referencia as year, COUNT(DISTINCT mes_referencia) as monthCount
+         FROM membros
+         GROUP BY ano_referencia
+         ORDER BY ano_referencia`
+      )
+      .all() as { year: number; monthCount: number }[];
+
+    db.close();
+    return rows;
+  } catch {
+    return [];
+  }
+}
+
+export const getCachedYearMonthCounts = unstable_cache(
+  async () => getYearMonthCounts(),
+  ["year-month-counts"],
+  { revalidate: 600 }
+);
