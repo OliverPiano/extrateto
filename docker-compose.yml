@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   app:
     build:
@@ -11,7 +9,7 @@ services:
       - "3000:3000"
 
     environment:
-      NODE_ENV: development
+      NODE_ENV: ${NODE_ENV:-development}
       PORT: 3000
       HOSTNAME: 0.0.0.0
     volumes:
@@ -21,10 +19,10 @@ services:
       sh -c '
         if [ "$$DB_INIT" = "seed" ]; then
           echo "Populando banco com dados de teste (seed)..."
-          tsx scripts/sync-data.ts --seed
+          npx tsx scripts/sync-data.ts --seed
         elif [ "$$DB_INIT" = "sync" ]; then
           echo "Sincronizando dados reais da API..."
-          tsx scripts/sync-data.ts --year 2024 --all
+          npx tsx scripts/sync-data.ts --year 2024 --all
         else
           echo "Iniciando sem sincronização de dados."
         fi &&
